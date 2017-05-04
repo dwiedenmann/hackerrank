@@ -73,70 +73,77 @@ import java.lang.Math;
 import java.io.*;
 import java.util.*;
 
+/***************************************************************
+* Solution
+* https://www.hackerrank.com/challenges/ctci-find-the-running-median
+* @author   David Wiedenmann
+* @version  1.0
+* @since    02/16/2017
+***************************************************************/
 public class Solution {
 
-// Set to true to get debug output
-static boolean debugMode = false;
+// Main
+public static void main(String[] args) {
 
-private static void DebugPrint(String s, Object ... args){
-	if (debugMode)
-		System.out.format(s,  args);
+
+	// Debug
+	Boolean debug = false;
+
+	// If in debug mode, simply read the input from the file
+	if ( debug == true ) {
+		try {
+			String workingDir = new File(System.getProperty("user.dir")).getParent();
+			String projectDir = "001 Arrays: Left Rotation";
+			String inputFile = workingDir + "/" + projectDir + "/input1.txt";
+
+			System.setIn(new FileInputStream( new File(inputFile) ));
+		} catch (Exception e) {
+			//System.out.println("Input file: not found" + inputFile);
+			System.out.println(e);
+		}
+	}
+	// String outputFile = debugPath + "output.txt";
+	//try {  }
+	//catch (IOException e) { System.out.println("InputFile not found"); }
+	//}
+
+	// Scan Input
+	Scanner sc = new Scanner(System.in);
+
+	// scan the number
+	int n = sc.nextInt();
+	int k = sc.nextInt();
+	int a[] = new int[n];
+	for(int a_i = 0; a_i < n; a_i++){
+			a[a_i] = sc.nextInt();
+	}
+
+	//System.out.println(n);
+
+	int[] output = new int[n];
+
+	output = arrayLeftRotation(a, n, k);
+	for(int i = 0; i < n; i++)
+			System.out.print(output[i] + " ");
+
+	System.out.println();
+
+	// Close the Scanner
+	sc.close();
 }
 
-public static void main(String args[] ) throws Exception {
-	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
+private static int[] arrayLeftRotation(int[] a, int n, int k){
+	// handle large k
+	//if (k >= n)
+	//	k = k % n;
 
-	//Scanner in = new Scanner(new File("/home/david/input3x8.txt"));
-	Scanner in = new Scanner(System.in);
+	int r[] = new int[n];
 
-	// Parse the input file
-	int rows = in.nextInt();
-	int cols = in.nextInt();
-	int[][] matrix = new int[rows][cols];
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < cols; j++) {
-			matrix[i][j] = in.nextInt();
-		}
+	//int len = a.length;
+	for(int i = 0; i < n; i++){
+			r[i] = a[(i + k) % n];
 	}
-
-	// Workaround for broken test case #1
-	if (rows == 2 && cols == 2 && matrix[0][0] == 1 && matrix[0][1] == 2 && matrix[1][0] == 3 && matrix[1][1] == 4 ) {
-		System.out.println("1 2 3 4");
-		return;
-	}
-
-	// initialize variables
-	int moveDist[] = {cols, rows - 1};              // are moving rows or columns
-	double theta            = Math.PI / 2;                          // angle
-	int x = 0, y = -1, dx, dy;                                              // position and direction
-	int dist;                                                                                                                       // distance to travel
-
-	// start looping around in a circle
-	// every 2 loops reduce distance travelled by 1
-	int l = 0;
-	do {
-
-		// rotate - we could easily use a matrix here, but this is more general
-		dx = (int) Math.cos(theta);  // convert to cartesian directions
-		dy = (int) Math.sin(theta);  // convert to cartesian directions
-		theta -= Math.PI / 2;        // rotate
-
-		// compute how far to move
-		dist = moveDist[l % 2];      // rows or columns
-		dist -= (int)(l / 2);        // every 2 loops there's one less element left
-
-		DebugPrint("l:%d dx:%d dy:%d dist:%d%n", l, dx, dy, dist);
-
-		// Move forward in the chosen direction
-		for (int m = 0; m < dist; m++) {
-			x += dx;                                  // increment x                                                                                                                      // increment x
-			y += dy;                                  // increment y                                                                                                                      // increment y
-			System.out.format("%d ", matrix[x][y] );  // Print the element
-
-			DebugPrint("Num:%d, x:%d y:%d%n", matrix[x][y], x, y);
-		}
-		l++;
-	} while (dist > 0);
+	return r;
 }
 
 }
