@@ -9,56 +9,53 @@
 ***	Cracking the Coding Interview **************************************************************************************
 ************************************************************************************************************************
 *
-*		https://www.hackerrank.com/challenges/ctci-making-anagrams
+*		https://www.hackerrank.com/challenges/ctci-ransom-note
 *
-*       Strings: Making Anagrams
+*       Hash Tables: Ransom Note
 *
-*		Check out the resources on the page's right side to learn more about arrays.
-*		The video tutorial is by Gayle Laakmann McDowell, author of the best-selling
-*		interview book Cracking the Coding Interview.
+*		A kidnapper wrote a ransom note but is worried it will be traced back to him.
+*		He found a magazine and wants to know if he can cut out whole words from it
+*		and use them to create an untraceable replica of his ransom note. The words
+*		in his note are case-sensitive and he must use whole words available in the
+*		magazine, meaning he cannot use substrings or concatenation to create the words he needs.
 *
-*		Alice is taking a cryptography class and finding anagrams to be very useful.
-*		We consider two strings to be anagrams of each other if the first string's
-*		letters can be rearranged to form the second string. In other words, both
-*		strings must contain the same exact letters in the same exact frequency
-*		For example, bacdc and dcbac are anagrams, but bacdc and dcbad are not.
-*
-*		Alice decides on an encryption scheme involving two large strings where
-*		encryption is dependent on the minimum number of character deletions required
-*		to make the two strings anagrams. Can you help her find this number?
-*
-*		Given two strings, a and b, that may or may not be of the same length, determine
-*		the minimum number of character deletions required to make a and b anagrams.
-*		Any characters can be deleted from either of the strings.
+*		Given the words in the magazine and the words in the ransom note, print Yes
+*		if he can replicate his ransom note exactly using whole words from the
+*		magazine; otherwise, print No.
 *
 *		Input Format
-*			The first line contains a single string, a.
-*			The second line contains a single string, b.
+*
+*		The first line contains two space-separated integers describing the
+*		respective values of m (the number of words in the magazine) and n
+*		(the number of words in the ransom note).
+*		The second line contains m space-separated strings denoting the words
+*		present in the magazine.
+*		The third line contains n space-separated strings denoting the words
+*		present in the ransom note.
 *
 *		Constraints
-*			1 <= |a|, |b| <= 10^4
-*			It is guaranteed that a and b consist of lowercase English alphabetic letters
-*				(i.e., a through z).
+*			1 <= m
+*			n <= 30000
+*			1 <= length of any word <= 5
+*			Each word consists of English alphabetic letters (i.e., a to z and A to Z).
+*			The words in the note and magazine are case-sensitive.
 *
 *		Output Format
-*			Print a single integer denoting the number of characters you must delete
-*			to make the two strings anagrams of each other.
+*			Print Yes if he can use the magazine to create an untraceable replica
+*			of his ransom note; otherwise, print No.
 *
 *		Sample Input
-*			cde
-*			abc
+*
+*			6 4
+*			give me one grand today night
+*			give one grand today
 *
 *		Sample Output
-*			4
+*			Yes
 *
 *		Explanation
-*			We delete the following characters from our two strings to turn them into
-*			anagrams of each other:
-*
-*			Remove d and e from cde to get c.
-*			Remove a and b from abc to get c.
-*			We must delete 4 characters to make both strings anagrams,
-*			so we print 4 on a new line.
+*			All four words needed to write an untraceable replica of the ransom note
+*			are present in the magazine, so we print Yes as our answer.
 *
 *
 ***********************************************************************************************************************/

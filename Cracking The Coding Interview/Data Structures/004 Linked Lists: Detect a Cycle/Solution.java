@@ -9,56 +9,49 @@
 ***	Cracking the Coding Interview **************************************************************************************
 ************************************************************************************************************************
 *
-*		https://www.hackerrank.com/challenges/ctci-making-anagrams
+*		https://www.hackerrank.com/challenges/ctci-linked-list-cycle
 *
-*       Strings: Making Anagrams
+*       Linked Lists: Detect a Cycle
 *
-*		Check out the resources on the page's right side to learn more about arrays.
-*		The video tutorial is by Gayle Laakmann McDowell, author of the best-selling
-*		interview book Cracking the Coding Interview.
+*		A linked list is said to contain a cycle if any node is visited more than
+*		once while traversing the list.
 *
-*		Alice is taking a cryptography class and finding anagrams to be very useful.
-*		We consider two strings to be anagrams of each other if the first string's
-*		letters can be rearranged to form the second string. In other words, both
-*		strings must contain the same exact letters in the same exact frequency
-*		For example, bacdc and dcbac are anagrams, but bacdc and dcbad are not.
+*		Complete the function provided in the editor below. It has one parameter:
+*		a pointer to a Node object named head that points to the head of a linked
+*		list. Your function must return a boolean denoting whether or not there
+*		is a cycle in the list. If there is a cycle, return true; otherwise,
+*		return false.
 *
-*		Alice decides on an encryption scheme involving two large strings where
-*		encryption is dependent on the minimum number of character deletions required
-*		to make the two strings anagrams. Can you help her find this number?
-*
-*		Given two strings, a and b, that may or may not be of the same length, determine
-*		the minimum number of character deletions required to make a and b anagrams.
-*		Any characters can be deleted from either of the strings.
+*		Note: If the list is empty,  will be null.
 *
 *		Input Format
-*			The first line contains a single string, a.
-*			The second line contains a single string, b.
+*			Our hidden code checker passes the appropriate argument to your function. You are not responsible for reading any input from stdin.
 *
 *		Constraints
-*			1 <= |a|, |b| <= 10^4
-*			It is guaranteed that a and b consist of lowercase English alphabetic letters
-*				(i.e., a through z).
+*			0 <= list size <= 100
 *
 *		Output Format
-*			Print a single integer denoting the number of characters you must delete
-*			to make the two strings anagrams of each other.
+*			If the list contains a cycle, your function must return true. If the
+*			list does not contain a cycle, it must return false. The binary integer
+*			corresponding to the boolean value returned by your function is printed
+*			to stdout by our hidden code checker.
 *
 *		Sample Input
-*			cde
-*			abc
+*			The following linked lists are passed as arguments to your function:
+*
+*			1 -> NULL
+*			1 -> 2 -> 3
+*			       <-
 *
 *		Sample Output
-*			4
+*			0
+*			1
 *
 *		Explanation
-*			We delete the following characters from our two strings to turn them into
-*			anagrams of each other:
-*
-*			Remove d and e from cde to get c.
-*			Remove a and b from abc to get c.
-*			We must delete 4 characters to make both strings anagrams,
-*			so we print 4 on a new line.
+*			The first list has no cycle, so we return false and the hidden code
+*			checker prints 0 to stdout.
+*			The second list has a cycle, so we return true and the hidden code
+*			checker prints 1 to stdout.
 *
 *
 ***********************************************************************************************************************/
@@ -79,6 +72,21 @@ public class Solution {
 
 // Main
 public static void main(String[] args) {
+
+
+	/*
+	Detect a cycle in a linked list. Note that the head pointer may be 'null' if the list is empty.
+
+	A Node is defined as:
+	    class Node {
+	        int data;
+	        Node next;
+	    }
+	*/
+
+	boolean hasCycle(Node head) {
+
+	}
 
 
 	// Debug
