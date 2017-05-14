@@ -84,6 +84,11 @@ import java.util.*;
 
 public class Solution {
 
+
+	public static boolean isBalanced(String expression) {
+
+	}
+
 // Main
 public static void main(String[] args) {
 
@@ -95,7 +100,7 @@ public static void main(String[] args) {
 	if ( debug == true ) {
 		try {
 			String workingDir = new File(System.getProperty("user.dir")).getParent();
-			String projectDir = "002 Strings: Making Anagrams";
+			String projectDir = "005 Stacks: Balanced Brackets";
 			String inputFile = workingDir + "/" + projectDir + "/input1.txt";
 
 			System.setIn(new FileInputStream( new File(inputFile) ));
@@ -104,62 +109,17 @@ public static void main(String[] args) {
 			System.out.println(e);
 		}
 	}
-	// String outputFile = debugPath + "output.txt";
-	//try {  }
-	//catch (IOException e) { System.out.println("InputFile not found"); }
-	//}
 
-	// Scan Input
-	Scanner sc = new Scanner(System.in);
-
-	// scan the strings
-	String a = sc.nextLine();
-	String b = sc.nextLine();
-	System.out.println(numberNeeded(a, b));
+	Scanner in = new Scanner(System.in);
+	int t = in.nextInt();
+	for (int a0 = 0; a0 < t; a0++) {
+			String expression = in.next();
+			System.out.println( (isBalanced(expression)) ? "YES" : "NO" );
+	}
 
 	// Close the Scanner
-	sc.close();
+	in.close();
 }
 
-private static int numberNeeded(String a, String b){
-	// handle large k
-	//if (k >= n)
-	//	k = k % n;
 
-	//System.out.println(a);
-	//System.out.println(b);
-
-	Hashtable<Character, Integer> hash = new Hashtable<Character, Integer>();
-
-	char c = '\u0000';
-	int n;
-
-	// Count characters in string a
-	for ( int i = 0; i < a.length(); i++ ) {
-		c = a.charAt(i);
-		if (hash.containsKey(c))
-			n = hash.get(c);
-		else n = 0;
-		hash.put(c, n + 1);
-	}
-
-	// Count characters in string b
-	for ( int i = 0; i < b.length(); i++ ) {
-		c = b.charAt(i);
-		//System.out.println(c);
-		if (hash.containsKey(c))
-			n = hash.get(c);
-		else n = 0;
-		hash.put(c, n - 1);
-	}
-
-	int d = 0;
-	for(Character key: hash.keySet()) {
-		d += Math.abs(hash.get(key));
-		//System.out.format("%s: %d\n", key, hash.get(key));
-	}
-
-	return d;
-
-}
 }
